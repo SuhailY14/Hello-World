@@ -1,0 +1,35 @@
+name: PR Close Actions
+on:
+   pull_request:
+       types: [closed]
+       branches: ['main', 'stage/**', 'develop/**', 'release/**']
+jobs:
+  post-processing-flow:
+    name: "PR merge processing"
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+    - name: Set up python
+      uses: actions/setup-python@v2
+      with:
+         python-version: '3.8.10'
+    - name: Install python dependencies
+      run: |
+        pip install requests
+    - name: PR Description check
+      run: python .github/scm_scripts/pr_desc_check.py "${{ github.event.pull_request.body }}"
+    - name: Fetch Commit Title 
+      env:
+        TICKET_ID: Dummy_field
+      run: |
+        export TICKET_ID=$(python .github/scm_scripts/title_check.py '${{ github.event.pull_request.title }}')
+        echo "TICKET_ID=$TICKET_ID" >> $GITHUB_ENV
+    - name: JIRA Comment
+      env:
+        JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
+      if: success() && (!startsWith(env.TICKET_ID, 'TK-') && !startsWith(env.TICKET_ID, 'B-'))
+      run: |
+        echo "JIRA TICKE ID = ${{ env.TICKET_ID }}"
+        python .github/scm_scripts/jira_comment.py "${{ env.TICKET_ID }}" "${{ env.JIRA_TOKEN }}" "${{ github.event.pull_request.user.login }}" "merging PR" "${{ github.event.pull_request.base.ref }}" "${{ github.event.repository.full_name }}" "${{ github.event.pull_request.html_url }}"
+
