@@ -1,5 +1,5 @@
 import re
-from request_html import HTMLSession
+from html import HTMLSession
 
 url = "https://github.com/settings/emails"
 x = re.search("^[a-zA-Z0-9].@infoblox.com$", url)
