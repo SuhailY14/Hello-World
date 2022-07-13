@@ -1,3 +1,4 @@
+pip3 install requests-html
 import re
 from requests_html import HTMLSession
 
