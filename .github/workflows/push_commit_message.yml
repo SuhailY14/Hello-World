@@ -13,7 +13,7 @@ jobs:
       - name: check out user.email
         env:
          email: <>@infoblox.com
-        if: success() && (endsWith( email, '<>@infoblox.com'))
+        if: success() && (endsWith( env.email, '<>@infoblox.com'))
         run: |
           echo "Valid user.email"
             
