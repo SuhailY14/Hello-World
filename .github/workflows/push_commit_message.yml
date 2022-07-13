@@ -12,11 +12,11 @@ jobs:
     steps:
       - name: email check
         env:
-         user_email: ${{<>@infoblox.com}}
-        if: success() && (endsWith( env.user_email, '<>@infoblox.com'))
+         email: <>@infoblox.com
         run: |
-          echo "valid email id = <>@infoblox.com"
-            
+         export email=$(python .github/scm_scripts/email_check.py '${{ github.event.email}}')
+         echo "email=$email" >> $GITHUB_ENV
+         
    github-preprocessing:
     name: "Code Commit Compliance Check"
     runs-on: ubuntu-latest
