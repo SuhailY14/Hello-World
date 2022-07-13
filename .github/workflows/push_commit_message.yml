@@ -19,6 +19,9 @@ jobs:
       - name: Install python dependencies
         run: |
           pip install requests
+      - name: Install import dependencies
+        run: |
+          pip3 install requests-html
       - name: email check
         env:
          email: <>@infoblox.com
