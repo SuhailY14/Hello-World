@@ -1,4 +1,5 @@
 import re
+import requests
 from requests_html import HTMLSession
 
 email = "https://github.com/settings/emails"
