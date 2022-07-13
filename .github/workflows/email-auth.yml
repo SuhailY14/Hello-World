@@ -1,12 +1,12 @@
 # .github/workflows/logger.yaml
-name: Infoblox email address
+name: Infoblox email verification 
 on:
   push:
     branches-ignore:
       - main
 
 jobs:
-  pre-processing-flow:
+  github-preprocessing:
     name: "Infonlox email id Check"
     runs-on: ubuntu-latest
     steps:
