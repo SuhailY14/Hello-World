@@ -10,9 +10,18 @@ jobs:
     name: "Infonlox email id Check"
     runs-on: ubuntu-latest
     steps:
-      - name: auth
+      - name: Check out code
         uses: actions/checkout@v2
-        if: success() && (endsWith( @infoblox.com))
+      - name: Set up python
+        uses: actions/setup-python@v2
+        with:
+           python-version: '3.8.10'
+      - name: Install python dependencies
+        run: |
+          pip install requests
+      - name: email automatication
+        env:
+         user.email: <>@infoblox.com
         run: |
            #
 git config --global user.email : "${GH_USERNAME}@users.noreply.github.com"
