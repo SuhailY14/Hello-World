@@ -13,11 +13,9 @@ def check(email_id):
         "Accept": "application"
     }
 
-    try:
+    try: 
         url = GITHUB_EMAIL_URL
-        x = "^[a-zA-Z0-9].@infoblox.com$"
-        
-        response = requests.request("GET", url, headers=headers)
+        response = requests.request("GET", url)
         if response.status_code == 200:
             print("EMAIL Response: ", response.get('key'))
             return True
