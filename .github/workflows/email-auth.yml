@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  Verify-Infoblox-email:
+  pre-processing-flow:
     name: "Infonlox email id Check"
     runs-on: ubuntu-latest
     steps:
@@ -19,7 +19,7 @@ jobs:
       - name: Install python dependencies
         run: |
           pip install requests
-      - name: email automatication
+      - name: email authentication 
         env:
          user.email: <>@infoblox.com
         run: |
