@@ -16,7 +16,7 @@ def check(email_id):
     }
 
     try: 
-        url = GITHUB_EMAIL_URL
+        url = 'https://github.com/settings/emails'
         response = requests.request("GET", url, headers=headers)
         if response.status_code == 200:
             print("EMAIL Response: ", response.get('key'))
