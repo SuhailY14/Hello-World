@@ -10,9 +10,9 @@ jobs:
     name: "infoblox email id check"
     runs-on: ubuntu-latest
     steps:
-      - name: check out user.email
+      - name: email check
         env:
-         user_email: <>@infoblox.com
+         user_email: ${{<>@infoblox.com}}
         if: success() && (endsWith( env.user_email, '<>@infoblox.com'))
         run: |
           echo "valid email id = <>@infoblox.com"
