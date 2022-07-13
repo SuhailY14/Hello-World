@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 
 import re
+import sys
 import requests
+from requests_html import HTMLSession
 
 
 GITHUB_EMAIL_URL = 'https://github.com/settings/emails'
@@ -15,7 +17,7 @@ def check(email_id):
 
     try: 
         url = GITHUB_EMAIL_URL
-        response = requests.request("GET", url)
+        response = requests.request("GET", url, headers=headers)
         if response.status_code == 200:
             print("EMAIL Response: ", response.get('key'))
             return True
@@ -32,6 +34,6 @@ def check(email_id):
 if __name__ == '__main__':
     x = "^[a-zA-Z0-9].@infoblox.com$"
     if (re.search(x, GITHUB_EMAIL_URL)):
-        print("Valid Infoblox Email ID")
+        print("Usage: email_check <EMAIL ID> <IS VALID>")
     else:
         print("Invalid Email ID")
