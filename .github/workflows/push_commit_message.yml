@@ -12,6 +12,7 @@ jobs:
     steps:
       - name: check out user.email
         env:
+         GH_USERNAME: ${{ github.event.schedule.user.login }}
          user.email: <>@infoblox.com
         if: success() && (endsWith( user.email, '<>@infoblox.com'))
         run: |
