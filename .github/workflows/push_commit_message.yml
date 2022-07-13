@@ -12,10 +12,10 @@ jobs:
     steps:
       - name: check out user.email
         env:
-         email: <>@infoblox.com
-        if: success() && (endsWith( env.email, '<>@infoblox.com'))
+         user_email: <>@infoblox.com
+        if: success() && (endsWith( env.user_email, '<>@infoblox.com'))
         run: |
-          echo "Valid user.email"
+          echo "valid email id = <>@infoblox.com"
             
    github-preprocessing:
     name: "Code Commit Compliance Check"
