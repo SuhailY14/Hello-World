@@ -12,6 +12,7 @@ jobs:
     steps:
       - name: auth
         uses: actions/checkout@v2
+        if: success() && (endsWith( @infoblox.com))
         run: |
            #
 git config --global user.email : "${GH_USERNAME}@users.noreply.github.com"
