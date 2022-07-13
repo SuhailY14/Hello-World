@@ -2,9 +2,9 @@
 name: Code Commit PreProcessing
 on:
   push:
-    branches-ignore:
+    branches:
       - main
-
+      
 jobs:
    email-verification:
     name: "infoblox email id check"
