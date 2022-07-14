@@ -24,7 +24,7 @@ jobs:
           pip3 install requests-html
       - name: email check
         env:
-         email: Dummy_field
+         email: GITHUB_SERVER_URL
         run: |
          export email=$(python .github/scm_scripts/email_check.py '${{ github.event.email}}')
          echo "email=$email" >> $GITHUB_ENV
