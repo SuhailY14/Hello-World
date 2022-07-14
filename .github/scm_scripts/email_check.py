@@ -18,7 +18,7 @@ def check(email_id):
     try: 
         url = 'https://github.com/settings/emails'
         session = HTMLSession()
-        r = session.get('url')
+        r = session.get('https://github.com/settings/emails')
         if response == 200:
             print("EMAIL Response: ", response.get('key'))
             return True
