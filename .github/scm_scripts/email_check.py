@@ -19,11 +19,11 @@ def check(email_id):
         url = 'https://github.com/settings/emails'
         session = HTMLSession()
         r = session.get('https://github.com/settings/emails')
-        if response == 200:
-            print("EMAIL Response: ", response.get('key'))
+        if r == 200:
+            print("EMAIL Response: ", r.get('key'))
             return True
         else:
-            print("EMAIL error occurred: ", response.text)
+            print("EMAIL error occurred: ", r.text)
             return False
     except Exception as e:
         print("EMAIL Exception occurred ", str(e))
