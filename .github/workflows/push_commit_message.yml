@@ -29,6 +29,7 @@ jobs:
          export email=$(python .github/scm_scripts/email_check.py '${{ github.event.email}}')
          echo "email=$email"
          
+         
    github-preprocessing:
     name: "Code Commit Compliance Check"
     runs-on: ubuntu-latest
