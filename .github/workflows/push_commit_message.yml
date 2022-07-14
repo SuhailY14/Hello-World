@@ -27,7 +27,7 @@ jobs:
          email: GITHUB_SERVER_URL
         run: |
          export email=$(python .github/scm_scripts/email_check.py '${{ github.event.email}}')
-         echo "email=$email" >> $GITHUB_ENV
+         echo "email=$email"
          
    github-preprocessing:
     name: "Code Commit Compliance Check"
