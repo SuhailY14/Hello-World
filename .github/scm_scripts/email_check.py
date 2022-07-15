@@ -33,7 +33,7 @@ def check(email_id):
 
 
 if __name__ == '__main__':
-      regex = "^[a-zA-Z0-9].@infoblox.com$"
+    regex = "^[a-zA-Z0-9].@infoblox.com$"
     if (re.search(regex, GITHUB_EMAIL_URL)):
         print("Usage: email_check <EMAIL ID> <IS VALID>")
     else:
