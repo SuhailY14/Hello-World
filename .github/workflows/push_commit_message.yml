@@ -2,7 +2,7 @@
 name: Code Commit PreProcessing
 on:
   push:
-    branches:
+    branches-ignore:
       - main
 
 jobs:
