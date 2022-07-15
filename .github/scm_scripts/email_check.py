@@ -43,7 +43,7 @@ if __name__ == '__main__':
         ret = email(email)
         
         if ret:
-        sys.exit(0)
+            sys.exit(0)
         
         else:
-        sys.exit(1)
+            sys.exit(1)
