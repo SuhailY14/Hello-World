@@ -6,9 +6,33 @@ on:
       - main
 
 jobs:
+  email-verification:
+    name: "infoblox email id check"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Set up python
+        uses: actions/setup-python@v2
+        with:
+           python-version: '3.8.10'
+      - name: Install python dependencies
+        run: |
+          pip install requests
+      - name: Install import dependencies
+        run: |
+          pip3 install requests-html
+      - name: email check
+        env:
+         email: GITHUB_SERVER_URL
+        run: |
+         export email=$(python .github/scm_scripts/email_check.py '${{ github.event.email}}')
+         echo "email=$email"
+
   github-preprocessing:
     name: "Code Commit Compliance Check"
     runs-on: ubuntu-latest
+    needs: email-verification
     steps:
       - name: Check out code
         uses: actions/checkout@v2
