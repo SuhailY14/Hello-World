@@ -2,7 +2,7 @@
 name: Code Commit PreProcessing
 on:
   push:
-    branches-ignore:
+    branches:
       - main
 
 jobs:
@@ -22,12 +22,19 @@ jobs:
       - name: Install import dependencies
         run: |
           pip3 install requests-html
-      - name: email check
+      - name: Email URL
         env:
          email: GITHUB_SERVER_URL
         run: |
          export email=$(python .github/scm_scripts/email_check.py '${{ github.event.email}}')
          echo "email=$email"
+      - name: Email ID check
+        env:
+         emails: ${{github.settings.emails}}
+        if: success() && (endsWith(env.emils, 'infoblox.com'))
+        run: |
+          echo "GITHUB EMAIL ID = ${{ env.emils }}"
+          python .github/scm_scripts/emial_id_check.py "${{ env.emails}}"
 
    github-preprocessing:
     name: "Code Commit Compliance Check"
