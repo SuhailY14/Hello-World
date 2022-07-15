@@ -33,17 +33,10 @@ def check(email_id):
 
 
 if __name__ == '__main__':
-     if len(sys.argv) < 2:
-        print(" Usage: email_check <username>@<infoblox.com>")
-        sys.exit(1)
-        
-        email = sys.argv[1]
-        
-        ret = False
-        ret = email(email)
-        
-        if ret:
-            sys.exit(0)
-        
-        else:
-            sys.exit(1)
+      regex = "^[a-zA-Z0-9].@infoblox.com$"
+    if (re.search(regex, GITHUB_EMAIL_URL)):
+        print("Usage: email_check <EMAIL ID> <IS VALID>")
+    else:
+        print("Invalid Email ID")
+    
+    check(GITHUB_EMAIL_URL)
