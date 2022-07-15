@@ -22,12 +22,6 @@ jobs:
       - name: Install import dependencies
         run: |
           pip3 install requests-html
-      - name: Email URL
-        env:
-         email: GITHUB_SERVER_URL
-        run: |
-         export email=$(python .github/scm_scripts/email_check.py '${{ github.event.email}}')
-         echo "email=$email"
       - name: Email ID check
         env:
          emails: ${{github.settings.emails}}
