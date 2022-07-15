@@ -36,13 +36,14 @@ if __name__ == '__main__':
      if len(sys.argv) < 3:
         print("Usage: email_check <EMAIL ID> <infoblox.com>")
         sys.exit(1)
-
-    email = sys.argv[1]
-
-    ret = False
-    ret = email(email)
-
-    if ret:
+        
+        email = sys.argv[1]
+        
+        ret = False
+        ret = email(email)
+        
+        if ret:
         sys.exit(0)
-    else:
+        
+        else:
         sys.exit(1)
