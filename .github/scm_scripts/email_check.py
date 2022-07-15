@@ -34,7 +34,7 @@ def check(email_id):
 
 if __name__ == '__main__':
      if len(sys.argv) < 3:
-        print("Usage: email_check <EMAIL ID> <infoblox.com>")
+        print(" Usage: email_check <username>@<infoblox.com>")
         sys.exit(1)
         
         email = sys.argv[1]
