@@ -21,7 +21,7 @@ jobs:
           pip install requests
       - name: Install import dependencies
         run: |
-          pip3 install GitPython
+          pip3 install requests-html
       - name: email check
         env:
          email: GITHUB_SERVER_URL
