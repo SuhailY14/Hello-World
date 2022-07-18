@@ -40,4 +40,3 @@ if __name__ == '__main__':
         print("Invalid Email ID")
     
     check(GITHUB_EMAIL_URL)
-
