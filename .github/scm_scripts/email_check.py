@@ -3,7 +3,6 @@
 import re
 import sys
 import requests
-from requests_html import HTMLSession
 from git import Repo
 
 
@@ -19,9 +18,14 @@ def check(email_id):
         return commits['sha']
     except:
         return "ERROR: Unable to retreive latest commit" 
-    
-    
+ 
     commit = commits_list[1]
         
     author = repo.git.show("-s", "--format=Author: %an <%ae>", commit.hexsha)
     print(author)
+    
+    regex = "^[a-zA-Z0-9].@infoblox.com$"
+    if (re.search(regex, author)):
+        print("Usage: email_check <EMAIL ID> <IS VALID>")
+    else:
+        print(" Invalid Email ID")
