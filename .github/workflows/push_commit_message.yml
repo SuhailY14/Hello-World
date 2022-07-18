@@ -23,7 +23,7 @@ jobs:
       - name: Install import dependencies
         run: |
           pip3 install requests-html
-      - name: email check
+      - name: author check
         env:
          author: GITHUB_API_URL
         run: |
