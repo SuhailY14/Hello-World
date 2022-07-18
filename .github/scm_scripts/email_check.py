@@ -15,9 +15,17 @@ def check(email_id):
         f = urlopen(url)
         content = f.read()
         commits = json.loads(content.decode('utf-8'))
-        return commit.author['sha']
+        return commits['sha']
     except:
         return "ERROR: Unable to retreive latest commit" 
+    
+    for i in range(1):
+    commits = commits_list[i]
+
+    print(commit.hexsha)
+    print(commit.author)
+    print(commit.committer)
+
 
     
 if __name__ == '__main__':
