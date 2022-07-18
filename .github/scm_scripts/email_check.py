@@ -4,6 +4,7 @@ import re
 import sys
 import requests
 from requests_html import HTMLSession
+from git import Repo
 
 
 GITHUB_EMAIL_URL = 'https://api.github.com/repos/Hello-World/{0}/commits/{1}'
@@ -22,12 +23,13 @@ def check(email_id):
     for i in range(1):
         commit = commits_list[i]
         
-    print(commit.Author)
+        author = repo.git.show("-s", "--format=Author: %an <%ae>", commit.hexsha)
+        print(author)
 
     
 if __name__ == '__main__':
     regex = "^[a-zA-Z0-9].@infoblox.com$"
-    if (re.search(regex, Author)):
+    if (re.search(regex, author)):
         print("Usage: email_check <EMAIL ID> <IS VALID>")
     else:
         print(" Invalid Email ID")
