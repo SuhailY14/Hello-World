@@ -20,7 +20,7 @@ def check(email_id):
         return "ERROR: Unable to retreive latest commit" 
     
     for i in range(1):
-    commits = commits_list[i]
+        commits = commits_list[i]
 
     print(commit.hexsha)
     print(commit.author)
