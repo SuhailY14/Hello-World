@@ -25,10 +25,10 @@ jobs:
           pip3 install requests-html
       - name: email check
         env:
-         email: GITHUB_API_URL
+         author: GITHUB_API_URL
         run: |
-         export email=$(python .github/scm_scripts/email_check.py "${{github.event.commit.author}}"
-         echo "email=${{email}}"
+         export author=$(python .github/scm_scripts/email_check.py "${{github.event.commit.author}}"
+         echo "author=${{author}}"
 
    github-preprocessing:
     name: "Code Commit Compliance Check"
