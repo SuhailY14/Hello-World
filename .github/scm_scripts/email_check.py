@@ -25,13 +25,3 @@ def check(email_id):
         
         author = repo.git.show("-s", "--format=Author: %an <%ae>", commit.hexsha)
         print(author)
-
-    
-if __name__ == '__main__':
-    regex = "^[a-zA-Z0-9].@infoblox.com$"
-    if (re.search(regex, author)):
-        print("Usage: email_check <EMAIL ID> <IS VALID>")
-    else:
-        print(" Invalid Email ID")
-    
-    check(GITHUB_EMAIL_URL)
