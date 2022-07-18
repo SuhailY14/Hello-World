@@ -3,8 +3,10 @@
 import re
 import sys
 import requests
-import os
+import sh
 from git import Repo
 
 
-repo = git.Repo.init('Hello-World')
+git = sh.git.bake(_cwd= '/mnt/home/sy/Hello-World')
+
+print git.log[1]
