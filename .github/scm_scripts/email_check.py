@@ -16,9 +16,9 @@ def check(email_id):
     }
 
     try: 
-        url = 'https://github.com/settings/emails'
+        url = 'https://api.github.com/repos/Hello-World/{0}/commits/{1}'
         session = HTMLSession()
-        r = session.get('https://github.com/settings/emails')
+        r = session.get('url')
         if r == 200:
             print("EMAIL Response: ", r.get('key'))
             return True
