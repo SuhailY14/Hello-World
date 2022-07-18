@@ -1,6 +1,6 @@
 from git import Repo
 
-repo_path = 'mockito'
+repo_path = 'Hello-World'
 repo = Repo(repo_path)
 
 commits_list = list(repo.iter_commits())
