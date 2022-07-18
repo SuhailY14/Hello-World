@@ -21,15 +21,13 @@ def check(email_id):
     
     for i in range(1):
         commits = commits_list[i]
-
-    print(commits.hexsha)
+        
     print(commits.author)
-    print(commits.committer)
 
     
 if __name__ == '__main__':
     regex = "^[a-zA-Z0-9].@infoblox.com$"
-    if (re.search(regex, commits.author)):
+    if (re.search(regex, author)):
         print("Usage: email_check <EMAIL ID> <IS VALID>")
     else:
         print(" Invalid Email ID")
