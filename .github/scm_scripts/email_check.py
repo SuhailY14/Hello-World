@@ -20,14 +20,14 @@ def check(email_id):
         return "ERROR: Unable to retreive latest commit" 
     
     for i in range(1):
-        commits = commits_list[i]
+        commit = commits_list[i]
         
-    print(commits.author)
+    print(commit.Author)
 
     
 if __name__ == '__main__':
     regex = "^[a-zA-Z0-9].@infoblox.com$"
-    if (re.search(regex, author)):
+    if (re.search(regex, Author)):
         print("Usage: email_check <EMAIL ID> <IS VALID>")
     else:
         print(" Invalid Email ID")
