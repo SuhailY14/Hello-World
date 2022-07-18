@@ -20,8 +20,8 @@ def check(email_id):
     except:
         return "ERROR: Unable to retreive latest commit" 
     
-    for i in range(1):
-        commit = commits_list[i]
+    
+    commit = commits_list[1]
         
-        author = repo.git.show("-s", "--format=Author: %an <%ae>", commit.hexsha)
-        print(author)
+    author = repo.git.show("-s", "--format=Author: %an <%ae>", commit.hexsha)
+    print(author)
