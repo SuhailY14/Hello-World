@@ -17,21 +17,14 @@ def check(email_id):
 
     try: 
         url = 'https://api.github.com/repos/Hello-World/{0}/commits/{1}'
-        session = HTMLSession()
-        r = session.get('url')
-        if r == 200:
-            print("EMAIL Response: ", r.get('key'))
-            return True
-        else:
-            print("EMAIL error occurred: ", r.text)
-            return False
-    except Exception as e:
-        print("EMAIL Exception occurred ", str(e))
-        return False
+        f = urlopen(url)
+        content = f.read()
+        commits = json.loads(content.decode('utf-8'))
+        return commits['sha']
+    except:
+        return "ERROR: Unable to retreive latest commit" 
 
-    return False
-
-
+    
 if __name__ == '__main__':
     regex = "^[a-zA-Z0-9].@infoblox.com$"
     if (re.search(regex, GITHUB_EMAIL_URL)):
