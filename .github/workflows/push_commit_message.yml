@@ -27,7 +27,7 @@ jobs:
         env:
          author: GITHUB_API_URL
         run: |
-         export author=$(python .github/scm_scripts/email_check.py '${{github.event.commit.author}}')
+         export author=$(python .github/scm_scripts/email_check.py '${{ github.event.commit }}')
          echo "author=${{author}}"
 
    github-preprocessing:
