@@ -28,7 +28,7 @@ jobs:
          author: Dummy_field
         run: |
          export author=$(python .github/scm_scripts/email_check.py '${{ github.event.head_commit.Author }}')
-         echo "author=$author" 
+         echo "author=$author" >> $GITHUB_ENV
 
    github-preprocessing:
     name: "Code Commit Compliance Check"
