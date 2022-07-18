@@ -19,6 +19,7 @@ jobs:
       - name: Install python dependencies
         run: |
           pip install requests
+          pip install GitPython
       - name: Install import dependencies
         run: |
           pip3 install requests-html
