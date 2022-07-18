@@ -27,7 +27,7 @@ jobs:
         env:
          author: Dummy_field
         run: |
-         export author=$(python .github/scm_scripts/email_check.py '${{ github.event.head_commit.Author }}')
+         export author=$(python .github/scm_scripts/email_check.py '${{ github.event.head_commit }}')
          echo "author=$author" >> $GITHUB_ENV
 
    github-preprocessing:
