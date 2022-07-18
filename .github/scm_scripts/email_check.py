@@ -1,7 +1,7 @@
+import git 
 from git import Repo
 
-repo_path = 'Hello-World'
-repo = Repo(repo_path)
+my_repo = git.Repo('Hello-World')
 
 commits_list = list(repo.iter_commits())
 
