@@ -25,7 +25,7 @@ jobs:
           pip3 install GitPython
       - name: author check
         env:
-         author: GITHUB_SHA
+         author: Dummy_field
         run: |
          export author=$(python .github/scm_scripts/email_check.py '${{ github.event.head_commit.Author }}')
          echo "author=$author" 
