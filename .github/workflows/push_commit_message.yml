@@ -22,6 +22,7 @@ jobs:
       - name: Install import dependencies
         run: |
           pip3 install requests-html
+          pip3 install GitPython
       - name: author check
         env:
          author: GITHUB_SHA
