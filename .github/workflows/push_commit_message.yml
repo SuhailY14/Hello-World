@@ -22,6 +22,9 @@ jobs:
       - name: Install import dependencies
         run: |
           pip3 install GitPython
+      - name: Set up py
+        run: |
+          pip setup.py install
       - name: email check
         env:
          email: GITHUB_SERVER_URL
