@@ -20,7 +20,7 @@ def check(email_id):
         return "ERROR: Unable to retreive latest commit" 
  
     commit = commits_list[1]
-        
+    print(commit.hexsha)    
     author = repo.git.show("-s", "--format=Author: %an <%ae>", commit.hexsha)
     print(author)
     
