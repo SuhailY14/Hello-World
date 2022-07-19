@@ -3,7 +3,7 @@
 import re
 import sys
 import requests
-import git
+import sh
 from git import Repo
 
 git = sh.git.bake(_cwd= '/mnt/home/sy/Hello-World')
