@@ -6,5 +6,6 @@ import requests
 import git
 from git import Repo
 
-repo = git.Repo("/mnt/home/sy/Hello-World")
-commit = repo.head.commit
+git = sh.git.bake(_cwd= '/mnt/home/sy/Hello-World')
+
+print ("%s" % git)
