@@ -13,6 +13,6 @@ def author(self):
     
     commit = commits_list[1]
     
-    author = repo.git.show("-s", "--format=%ae", commit.hexsha)
+    author = repo.git.log( "--pretty='%ae'", "-n 1")
     print(commit.hexsha)
     print(author)
