@@ -9,4 +9,4 @@ from git import Repo
 
 git = sh.git.bake(_cwd= '/mnt/home/sy/Hello-World')
 
-print ("%s" % git)
+print ("%s" % git.log[0])
