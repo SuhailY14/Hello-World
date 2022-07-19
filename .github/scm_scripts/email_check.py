@@ -3,7 +3,6 @@
 import re
 import sys
 import requests
-import sh
 import git
 from git import Repo
 
@@ -11,7 +10,6 @@ def get_latest_commit(repo_path, branch_path):
     repo = git.Repo(repo_path)
     for ref in repo.refs:
         if ref.path == 'refs/heads/BLDTLS-137':
-            print(ref.commit)
             print(ref.commit.author.email)
 
 
