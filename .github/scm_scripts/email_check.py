@@ -9,9 +9,9 @@ from git import Repo
 
 def author(self):
     repo = sh.git.bake(_cwd= '/mnt/home/sy/Hello-World')
-    commits_list = list(repo.iter_commits(0))
+    commits_list = list(repo.iter_commits())
     
-    commit = commits_list[0]
+    commit = commits_list[]
     
     author = repo.git.show("-s", "--format=Author: %an <%ae>", commit.hexsha)    
     print(author)
