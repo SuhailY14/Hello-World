@@ -7,12 +7,10 @@ import sh
 import subprocess
 from git import Repo
 
-def author(self):
-    repo = sh.git.bake(_cwd= '/mnt/home/sy/Hello-World')
-    commits_list = list(repo.iter_commits(1))
-    
-    commit = commits_list[1]
-    
-    author = repo.git.log( "--pretty='%ae'", "-n 1")
-    print(commit.hexsha)
-    print(author)
+def get_lastest_commit(repo_path, branch_path):
+    repo = git.Repo(repo_path)
+    for ref in repo.refs:
+        print(ref.path)
+
+if __name__ == '__main__':
+    get_latest_commit('/mnt/home/sy/Hello-World', '')
