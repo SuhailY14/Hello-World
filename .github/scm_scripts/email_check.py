@@ -3,7 +3,7 @@
 import re
 import sys
 import requests
-import subprocess
+import sh
 import git
 from git import Repo
 
@@ -21,7 +21,7 @@ if(re.search(regex, get_latest_commit)):
 else:
     print("INVALID EMAIL ID")
 
-    
+
 
 if __name__ == '__main__':
     get_latest_commit('/mnt/home/sy/Hello-World', '')
