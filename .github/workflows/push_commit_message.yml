@@ -23,7 +23,7 @@ jobs:
         run: |
           pip3 install requests-html
           pip3 install GitPython
-          pip3 install --user git-filter-repo
+          pip3 install sh
       - name: author check
         env:
          author: GITHUB_SHA
