@@ -14,14 +14,6 @@ def get_latest_commit(repo_path, branch_path):
             print(ref.commit)
             print(ref.commit.author.email)
 
-regex = "^[a-zA-Z0-9].@infoblox.com$"
-
-if(re.search(regex, get_latest_commit)):
-    print("EAMIL ID IS VALID")
-else:
-    print("INVALID EMAIL ID")
-
-
 
 if __name__ == '__main__':
     get_latest_commit('/mnt/home/sy/Hello-World', '')
