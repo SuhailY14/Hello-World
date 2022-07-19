@@ -3,7 +3,7 @@
 import re
 import sys
 import requests
-import sh
+import git
 from git import Repo
 
 repo = git.Repo("/mnt/home/sy/Hello-World")
