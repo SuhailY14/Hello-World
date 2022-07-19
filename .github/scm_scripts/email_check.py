@@ -3,40 +3,16 @@
 import re
 import sys
 import requests
-from requests_html import HTMLSession
+import sh
+import subprocess
+from git import Repo
 
+git = sh.git.bake(_cwd= '/mnt/home/sy/Hello-World')
 
-GITHUB_EMAIL_URL = 'https://github.com/settings/emails'
+commits_list = list(Repo.iter_commits())
 
-def check(email_id):
+for i in range(5):
+    commit = commits_list[i]
     
-    headers = {
-        "Authorization": "Basic ",
-        "Accept": "application"
-    }
-
-    try: 
-        url = 'https://api.github.com/repos/Hello-World/{0}/commits/{1}'
-        session = HTMLSession()
-        r = session.get('url')
-        if r == 200:
-            print("EMAIL Response: ", r.get('key'))
-            return True
-        else:
-            print("EMAIL error occurred: ", r.text)
-            return False
-    except Exception as e:
-        print("EMAIL Exception occurred ", str(e))
-        return False
-
-    return False
-
-
-if __name__ == '__main__':
-    regex = "^[a-zA-Z0-9].@infoblox.com$"
-    if (re.search(regex, GITHUB_EMAIL_URL)):
-        print("Usage: email_check <EMAIL ID> <IS VALID>")
-    else:
-        print("Invalid Email ID")
-    
-    check(GITHUB_EMAIL_URL)
+   
+    print(commit.author)

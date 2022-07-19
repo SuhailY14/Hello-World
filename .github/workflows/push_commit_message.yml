@@ -6,8 +6,8 @@ on:
       - main
 
 jobs:
-   email-verification:
-    name: "infoblox email id check"
+   author-verification:
+    name: "infoblox commit author check"
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
@@ -22,17 +22,19 @@ jobs:
       - name: Install import dependencies
         run: |
           pip3 install requests-html
-      - name: email check
+          pip3 install GitPython
+          pip3 install sh
+      - name: author check
         env:
-         email: GITHUB_SERVER_URL
+         author: GITHUB_SHA
         run: |
-         export email=$(python .github/scm_scripts/email_check.py '${{ github.event.email}}')
-         echo "email=$email"
+         export author=$(python .github/scm_scripts/email_check.py '${{ github.head_ref }}.${{ github.sha }}')
+         echo "author=$author" >> $GITHUB_ENV
 
    github-preprocessing:
     name: "Code Commit Compliance Check"
     runs-on: ubuntu-latest
-    needs: email-verification
+    needs: author-verification 
     steps:
       - name: Check out code
         uses: actions/checkout@v2
