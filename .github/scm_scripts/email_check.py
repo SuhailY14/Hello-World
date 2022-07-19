@@ -9,8 +9,11 @@ from git import Repo
 
 git = sh.git.bake(_cwd= '/mnt/home/sy/Hello-World')
 
-def get_git_revisions_hash():
-    hashes = []
-    hashes.append(subprocess.check_output(['git', 'rev-parse', 'HEAD']))
-    hashes.append(subprocess.check_output(['git', 'rev-parse', 'HEAD^']))
-    return hashes
+commits_list = list(repo.iter_commits())
+
+for i in range(5):
+    commit = commits_list[i]
+
+    print(commit.hexsha)
+    print(commit.author)
+    print(commit.committer)
