@@ -7,12 +7,11 @@ import sh
 import subprocess
 from git import Repo
 
-git = sh.git.bake(_cwd= '/mnt/home/sy/Hello-World')
-
-commits_list = list(Repo.iter_commits(self))
-
-for i in range(5):
-    commit = commits_list[i]
+def author(self):
+    git = sh.git.bake(_cwd= '/mnt/home/sy/Hello-World')
+    commits_list = list(Repo.iter_commits())
     
-   
-    print(commit.author)
+    for i in range(5):
+        commit = commits_list[i]
+        
+        print(commit.author)
