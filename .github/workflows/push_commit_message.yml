@@ -28,7 +28,7 @@ jobs:
         env:
          author: GITHUB_SHA
         run: |
-         export author=$(python .github/scm_scripts/email_check.py '${{ github.event.head_commit.message.sha }}')
+         export author=$(python .github/scm_scripts/email_check.py '${{ github.event.head_commit.sha }}')
          echo "author=$author" >> $GITHUB_ENV
 
    github-preprocessing:
