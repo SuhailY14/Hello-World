@@ -4,6 +4,7 @@ import re
 import sys
 import sh
 import git
+import os
 from git import Repo
 
 def get_latest_commit(repo_path, branch_path):
