@@ -13,12 +13,12 @@ def check_author_email(self, email):
         sys.exit(0)
         
     else:
-        print(“ ae : '[a-zA-Z0-9].@infoblox.com' ”)
+        print(" ae : '[a-zA-Z0-9].@infoblox.com' ”)
         sys.exit(1)
         
     repo = sh.git.bake(_cwd= '/mnt/home/sy/Hello-World')
     commits_list = list(repo.iter_commits(1))
-    
+     
     commit = commits_list[1]
     
     author = repo.git.log( "--pretty='%ae'", "-n 1")
