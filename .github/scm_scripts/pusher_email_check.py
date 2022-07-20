@@ -14,7 +14,7 @@ def check_author_email(self, email):
         
     else:
         print("author email format: <a-zA-Z0-9><@infoblox.com>”)
-        sys.exit(1)
+        sys.exit(0)
         
     repo = sh.git.bake(_cwd= '/mnt/home/sy/Hello-World')
     commits_list = list(repo.iter_commits(1))
