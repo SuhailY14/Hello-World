@@ -24,11 +24,11 @@ jobs:
           pip3 install requests-html
           pip3 install GitPython
           pip3 install sh
-      - name: View the information of the pusher
+      - name: pusher email check
         run: |
+          export DOMAIN_ID=$(python .github/scm_scripts/pusher_email_check.py '${{ github.event.pusher.email }}"')
           echo "The name of the pusher: ${{ github.event.pusher.name }}"
           echo "The email of the pusher: ${{ github.event.pusher.email }}"
-
       - name: View the github context
         run: echo "$GITHUB_CONTEXT"
         env:
