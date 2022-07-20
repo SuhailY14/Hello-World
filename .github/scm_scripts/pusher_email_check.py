@@ -13,7 +13,7 @@ def check_author_email(self, email):
         sys.exit(0)
         
     else:
-        print(" ae : '[a-zA-Z0-9].@infoblox.com' ”)
+        print("author email format: [a-zA-Z]@infoblox.com”)
         sys.exit(1)
         
     repo = sh.git.bake(_cwd= '/mnt/home/sy/Hello-World')
