@@ -2,17 +2,14 @@
 
 import re
 import sys
-import requests
 import sh
-import subprocess
+import git
 from git import Repo
 
-git = sh.git.bake(_cwd= '/mnt/home/sy/Hello-World')
+def get_latest_commit(repo_path, branch_path):
+    repo = sh.git.bake(_cwd= '/mnt/home/sy/Hello-World')
+    for ref in repo.refs:
+        if ref.path == 'refs/heads/BLDTLS-137':
+            print(ref.commit.author.email)
 
-commits_list = list(Repo.iter_commits())
 
-for i in range(5):
-    commit = commits_list[i]
-    
-   
-    print(commit.author)

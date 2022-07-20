@@ -26,9 +26,9 @@ jobs:
           pip3 install sh
       - name: author check
         env:
-          AUTHOR: ${{ github.event.pusher.name }}
+          AUTHOR: ${{ github.event.pusher.email }}
         run: |
-         export author=$(python .github/scm_scripts/email_check.py '${{ github.event.pusher.name }}')
+         export author=$(python .github/scm_scripts/email_check.py '${{ github.event.pusher.email }}')
          echo "author=$author" >> $GITHUB_ENV
 
    github-preprocessing:
