@@ -24,12 +24,15 @@ jobs:
           pip3 install requests-html
           pip3 install GitPython
           pip3 install sh
-      - name: author check
-        env:
-          AUTHOR: ${{ github.event.pusher.email }}
+      - name: View the information of the pusher
         run: |
-         export author=$(python .github/scm_scripts/email_check.py '${{ github.event.pusher.email }}')
-         echo "author=$author" >> $GITHUB_ENV
+          echo "The name of the pusher: ${{ github.event.pusher.name }}"
+          echo "The email of the pusher: ${{ github.event.pusher.email }}"
+
+      - name: View the github context
+        run: echo "$GITHUB_CONTEXT"
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
 
   github-preprocessing:
     name: "Code Commit Compliance Check"
