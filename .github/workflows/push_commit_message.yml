@@ -30,7 +30,7 @@ jobs:
           echo "The email of the pusher: ${{ github.event.pusher.email }}"
 
       - name: View the github context
-        run: echo "$GITHUB_CONTEXT"
+        run: echo "$GITHUB_CONTEXT.author.email"
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
 
