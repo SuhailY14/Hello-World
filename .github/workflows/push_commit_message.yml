@@ -43,10 +43,10 @@ jobs:
       - name: Check for non-ascii characters
         id: read_file
         uses: andstor/file-reader-action@v1
-        with:
-          path: export $(python .github/scm_scripts/content_check.py '${{ github.event.file.content }}')
       - name: File contents
-        run: echo "${ steps.read_file.outputs.contents }"
+        run: |
+          echo "${ steps.read_file.outputs.contents }"
+          export $(python .github/scm_scripts/content_check.py '${{ github.event.file.content }}')
 
   github-preprocessing:
     name: "Code Commit Compliance Check"
