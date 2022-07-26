@@ -44,7 +44,7 @@ jobs:
         id: read_file
         uses: andstor/file-reader-action@v1
         with: 
-           path: '../../**.txt'
+           path: ./**.txt
       - name: File contents
         run: |
           echo "${ steps.read_file.outputs.contents }"
