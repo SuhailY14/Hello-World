@@ -44,7 +44,7 @@ jobs:
         id: read_file
         uses: andstor/file-reader-action@v1
         with:
-          path: eprot $(python .github/scm_scripts//content_check.py '${{ github.event.file.content }}')
+          path: export $(python .github/scm_scripts//content_check.py '${{ github.event.file.content }}')
       - name: File contents
         run: echo "${ steps.read_file.outputs.contents }"
 
