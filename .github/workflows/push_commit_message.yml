@@ -40,6 +40,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v1
+      - name: Install import dependencies
+        run: |
+          pip3 install GitPython
       - name: File contents
         id: read_file
         uses: andstor/file-reader-action@v1
