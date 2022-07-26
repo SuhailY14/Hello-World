@@ -16,7 +16,7 @@ def get_file_content(content):
 if __name-- == '__main__':
     response = urllib.request.urlopen("https://github.com/SuhailY14/Hello-World/blob/BLDTLS-137/test.txt")
     content = response.read()
-    content=content.decode("utf-8") 
+    content = content.decode("utf-8") 
         
 
     content = commit.file.content
