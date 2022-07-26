@@ -47,7 +47,6 @@ jobs:
            path: ./test.txt
       - name: Check for non-ascii characters
         run: |
-          echo "${ steps.file_contents.outputs.contents }"
           export $(python .github/scm_scripts/content_check.py '${{ github.event.file.content }}')
 
   github-preprocessing:
