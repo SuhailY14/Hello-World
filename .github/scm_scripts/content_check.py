@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import sys
+import urllib
 from git import Repo
 
 def get_file_content(content):
@@ -13,14 +14,9 @@ def get_file_content(content):
         print("VALID CONTENT")
         
 if __name-- == '__main__':
-    repo= Repo('../../')
-    with open(repo) as fp:
-        line = fp.readline()
-        cnt = 1
-        while line:
-            print("Line {}: {}".format(cnt, line.strip()))
-            line = fp.readline()
-            cnt += 1
+    response = urllib.request.urlopen("https://github.com/SuhailY14/Hello-World/blob/BLDTLS-137/test.txt")
+    content = response.read()
+    content=content.decode("utf-8") 
         
 
     content = commit.file.content
