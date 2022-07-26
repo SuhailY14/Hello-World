@@ -40,14 +40,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v1
-      - name: Check for non-ascii characters
+      - name: File contents
         id: read_file
         uses: andstor/file-reader-action@v1
         with: 
            path: ./test.txt
-      - name: File contents
+      - name: Check for non-ascii characters
         run: |
-          echo "${ steps.read_file.outputs.contents }"
+          echo "${ steps.file_contents.outputs.contents }"
           export $(python .github/scm_scripts/content_check.py '${{ github.event.file.content }}')
 
   github-preprocessing:
