@@ -20,7 +20,7 @@ def check_author_email(email):
     
 if __name__ == '__main__':
     #repo = sh.git.bake(_cwd= '/mnt/home/sy/Hello-World') 
-    repo= Repo('../../')
+    repo= Repo('../../Hello-World')
     commits_list = list(repo.iter_commits(max_count=1))
 
     commit = commits_list[0]
