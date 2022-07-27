@@ -34,6 +34,23 @@ jobs:
         run: echo "$GITHUB_CONTEXT.author.email"
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
+          
+  file_contents:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+      - name: Install import dependencies
+        run: |
+          pip3 install GitPython
+      - name: File contents
+        id: read_file
+        uses: andstor/file-reader-action@v1
+        with: 
+           path: './docs/**'
+      - name: Check for non-ascii characters
+        run: |
+          export $(python .github/scm_scripts/content_check.py '${{ github.event.file.content }}')
 
   github-preprocessing:
     name: "Code Commit Compliance Check"
