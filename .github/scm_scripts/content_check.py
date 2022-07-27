@@ -14,7 +14,8 @@ def get_file_content(content):
         print("VALID CONTENT")
         
 if __name__ == '__main__':
-    response = urllib.request.urlopen("https://github.com/SuhailY14/Hello-World/blob/BLDTLS-137/test.txt")
+    repo = Repo('../../test.txt')
+    # response = urllib.request.urlopen("https://github.com/SuhailY14/Hello-World/blob/BLDTLS-137/test.txt")
     content = response.read()
     content = content.decode("utf-8") 
         
