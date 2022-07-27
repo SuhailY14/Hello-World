@@ -33,3 +33,15 @@ jobs:
         echo "JIRA TICKE ID = ${{ env.TICKET_ID }}"
         python .github/scm_scripts/jira_comment.py "${{ env.TICKET_ID }}" "${{ env.JIRA_TOKEN }}" "${{ github.event.pull_request.user.login }}" "merging PR" "${{ github.event.pull_request.base.ref }}" "${{ github.event.repository.full_name }}" "${{ github.event.pull_request.html_url }}"
 
+  automatically-delete-branch:
+    name: "delete branch after PR Merge"
+    runs-on: ubuntu-latest
+    needs: post-processing-flow
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+    - name: Install import dependencies
+      run: |
+        pip3 install subprocess
+    - name: Branch deletion after PR Merge
+      run: python .github/scm_scripts/delete_branch.py "${{ github.event.branch.delete }}"
