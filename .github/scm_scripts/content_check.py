@@ -15,15 +15,7 @@ def get_file_content(content):
         
 if __name__ == '__main__':
     repo = Repo('../../test.txt')
-<<<<<<< HEAD
-<<<<<<< HEAD
     #response = urllib.request.urlopen("https://github.com/SuhailY14/Hello-World/blob/BLDTLS-137/test.txt")
-=======
-    # response = urllib.request.urlopen("https://github.com/SuhailY14/Hello-World/blob/BLDTLS-137/test.txt")
->>>>>>> a0ea0d84d0cd83086f65ee66567273a15ca7ac64
-=======
-    #response = urllib.request.urlopen("https://github.com/SuhailY14/Hello-World/blob/BLDTLS-137/test.txt")
->>>>>>> 4704b4f381a470a991e6ef92ef6f2cba801dd32f
     content = response.read()
     content = content.decode("utf-8") 
         
