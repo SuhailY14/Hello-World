@@ -4,7 +4,8 @@ import sys
 
 def get_merged_branches():
     ''' a list of merged branches, not couting the current branch or main '''
-    raw_results = check_output('git branch --merged origin', shell=True)
+    raw_results = check_output('git branch --merged main', shell=True)
+    #print(raw_results)
     return [b.strip() for b in raw_results.split(b'\n')
         if b.strip() and not b.startswith(b'*') and b.strip() != 'main']
 
