@@ -39,13 +39,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v1
       - name: Install import dependencies
         run: |
           pip3 install GitPython
       - name: File contents
         id: read_file
-        uses: andstor/file-reader-action@v2
+        uses: andstor/file-reader-action@v1
       - name: Check for non-ascii characters
         run: |
           export $(python .github/scm_scripts/content_check.py '${{ github.event.file.content }}')
