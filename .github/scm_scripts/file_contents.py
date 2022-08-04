@@ -16,7 +16,7 @@ def get_file_content(content):
         print("VALID CONTENT")
 
 if __name__ == '__main__':
-    filepath = 'Hello-World/test.txt'
+    filepath = 'Hello-World'
     #filepath = '../../'
     repo = Repo(filepath)
 
