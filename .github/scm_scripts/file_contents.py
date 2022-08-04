@@ -16,8 +16,7 @@ def get_file_content(content):
         print("VALID CONTENT")
 
 if __name__ == '__main__':
-    filepath = 'Hello-World'
-    #filepath = '../../'
+    filepath = '../../'
     repo = Repo(filepath)
 
     commits_list = list(repo.iter_commits(max_count=1))
