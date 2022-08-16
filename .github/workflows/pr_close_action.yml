@@ -33,7 +33,6 @@ jobs:
         echo "JIRA TICKE ID = ${{ env.TICKET_ID }}"
         python .github/scm_scripts/jira_comment.py "${{ env.TICKET_ID }}" "${{ env.JIRA_TOKEN }}" "${{ github.event.pull_request.user.login }}" "merging PR" "${{ github.event.pull_request.base.ref }}" "${{ github.event.repository.full_name }}" "${{ github.event.pull_request.html_url }}"
 
-
   automatically-delete-branch:
     name: "delete branch after PR Merge"
     runs-on: ubuntu-latest
@@ -45,4 +44,6 @@ jobs:
       run: |
         pip3 install --upgrade  subprocess.run
     - name: Branch deletion after PR Merge
-      run: python .github/scm_scripts/delete_branch.py --confirm "${{ github.ref }}"
+      uses: Hello-World/delete-merged-branch@main
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
