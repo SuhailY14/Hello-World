@@ -7,14 +7,12 @@ def get_merged_branches():
     ''' a list of merged branches, not couting the current branch or main '''
     raw_results =  check_output(b'git branch --merged main', shell=True)
     raw_results = raw_results.decode()
-    #print(raw_results)
+    print(raw_results)
     return [b.strip() for b in raw_results.split('\n')
         if b.strip() and not b.startswith('*') and b.strip() != 'main']
 
 
 def delete_branch(branch):
-    print('suhail')
-    print(branch)
     return check_output('git branch -D %s' % branch, shell=True).strip()
 '''
 def restore_branch(branch):
@@ -26,8 +24,6 @@ if __name__ == '__main__':
         if dry_run:
             print(branch)
         else:
-            print('suhail else case')
-            print(branch)
             print(delete_branch(branch))
     if dry_run:
         print('*****************************************************************')
