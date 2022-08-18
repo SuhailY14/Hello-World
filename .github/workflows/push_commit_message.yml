@@ -24,14 +24,13 @@ jobs:
           pip3 install requests-html
           pip3 install GitPython
           pip3 install sh
-      - name: pusher eamil check
+      - name: pusher email check
         run: |
-          export DOMAIN_ID=$(python .github/scm_scripts/pusher_email_check.py '${{ github.event.pusher.email }}')
+          export DOMAIN_ID=$(python .github/scm_scripts/pusher_email_check.py '${{ github.event.pusher.email }}"')
           echo "The name of the pusher: ${{ github.event.pusher.name }}"
           echo "The email of the pusher: ${{ github.event.pusher.email }}"
-
       - name: View the github context
-        run: echo "$GITHUB_CONTEXT.author.email"
+        run: echo "$GITHUB_CONTEXT"
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
           
@@ -52,6 +51,7 @@ jobs:
         run: |
           export $(python .github/scm_scripts/content_check.py '${{ github.event.file.content }}')
 
+     
   github-preprocessing:
     name: "Code Commit Compliance Check"
     runs-on: ubuntu-latest

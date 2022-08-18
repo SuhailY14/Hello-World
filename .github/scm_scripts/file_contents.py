@@ -2,6 +2,8 @@
 
 import sys
 import urllib
+import tempfile
+import os
 from git import Repo
 
 def get_file_content(content):
@@ -9,13 +11,30 @@ def get_file_content(content):
     if not content.isascii():
         print("Commit file contains non-ascii characters")
         sys.exit(1)
-        
+
     else:
         print("VALID CONTENT")
-        
+
 if __name__ == '__main__':
-    filepath = '../../test.txt'
-    with open(filepath) as fp:
+    filepath = '../../'
+    repo = Repo(filepath)
+
+    commits_list = list(repo.iter_commits(max_count=1))
+
+    commit = commits_list[0]
+
+    print("commit id:", commit)
+
+    filename = repo.git.show("--pretty=",'--name-only', commit)
+    print("file name:", filename)
+    
+    #filecontent = repo.git.show("%s:%s" % (commit, filename))
+    #print(filecontent)
+    
+    filelocation = '../../'
+    location = filelocation + filename
+    print(location)
+    with open(location) as fp:
         line = fp.readline()
         cnt = 1
         while line:
@@ -25,19 +44,4 @@ if __name__ == '__main__':
     
     content = line
     get_file_content(content)
-
-    '''
-    sys.path.append('../../test.txt')
-    repo = Repo('../../test.txt')
-    #response = urllib.request.urlopen("https://github.com/SuhailY14/Hello-World/blob/BLDTLS-137/test.txt")
-    #from 'Hello-World' import test.txt
-
-
-    content = r.read()
-    content = content.decode("utf-8") 
-        
-
-    content = commit.file.content
-    '''
-    #get_file_content(content)
 
