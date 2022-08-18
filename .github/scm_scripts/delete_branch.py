@@ -13,6 +13,8 @@ def get_merged_branches():
 
 
 def delete_branch(branch):
+    print('suhail')
+    print(branch)
     return check_output('git branch -D %s' % branch, shell=True).strip()
 '''
 def restore_branch(branch):
@@ -24,6 +26,8 @@ if __name__ == '__main__':
         if dry_run:
             print(branch)
         else:
+            print('suhail else case')
+            print(branch)
             print(delete_branch(branch))
     if dry_run:
         print('*****************************************************************')
