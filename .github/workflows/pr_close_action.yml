@@ -43,6 +43,7 @@ jobs:
     - name: Install import dependencies
       run: |
         pip3 install --upgrade  subprocess.run
+        pip3 install GitPython
     - name: Branch deletion after PR Merge
       run: python .github/scm_scripts/delete_branch.py --confirm "${{ github.event.delete_branch }}"
       env:
