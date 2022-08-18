@@ -44,4 +44,6 @@ jobs:
       run: |
         pip3 install --upgrade  subprocess.run
     - name: Branch deletion after PR Merge
-      run: python .github/scm_scripts/delete_branch.py --confirm "${{ github.event.branch.delete }}"
+      run: python .github/scm_scripts/delete_branch.py --confirm "${{ github.event.delete_branch }}"
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
