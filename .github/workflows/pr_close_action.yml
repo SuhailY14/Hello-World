@@ -45,6 +45,12 @@ jobs:
         pip3 install --upgrade  subprocess.run
         pip3 install GitPython
     - name: Branch deletion after PR Merge
-      run: python .github/scm_scripts/delete_branch.py --confirm "${{ github.event.delete_branch }}"
+      run: |
+         DELETE_BRANCH=$(python .github/scm_scripts/delete_branch.py --confirm '${{ github.event.delete_branch }}')
+         echo "DELETED_BRANCH=$DELETE_BRANCH" >> $GITHUB_ENV
+    - name: Restore deleted merged branch
+      run: |
+         RESTORE_BRANCH=$(python .github/scm_scripts/restore_branch.py '${{ github.event.delete_branch }}')
+         echo "RESTORED_BRANCH=$RESTORE_BRANCH"
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
