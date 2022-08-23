@@ -2,52 +2,36 @@ from subprocess import check_output
 import sys
 from git import Repo
 
-
-def get_deleted_branches():
-    ''' a list of merged branches, not couting the current branch or main '''
-    raw_results =  check_output(b'git branch --merged main', shell=True)
-    raw_results = raw_results.decode()
+def get_deleted_branch():
+    deleted_branch = []
+    raw_results = repo.git.reflog(max_count=10)
     #print(raw_results)
-    return [b.strip() for b in raw_results.split('\n')
-        if b.strip() and not b.startswith('*') and b.strip() != 'main']
+    all_words = raw_results.split('\n')
+    for i in all_words:
+        if 'checkout:' in i and 'main' not in i:
+            all = i.split()
+            deleted_branch.append(all[5])
+    return deleted_branch
 
-
-def delete_branch(branch):
-    return check_output('git branch -D %s' % branch, shell=True).strip()
-'''
-def restore_branch(branch):
-    return check_output('git checkout -b %s' % branch % sha, shell=True).strip()
+def restore_branch(deleted_branch, first_word):
+    return check_output('git checkout -b %s' % deleted_branch % first_word, shell=True).strip()
 
 if __name__ == '__main__':
-    '''
-    dry_run = '--confirm' not in sys.argv
-    for branch in get_merged_branches():
-        if dry_run:
-            print(branch)
-        else:
-            print(delete_branch(branch))
-    if dry_run:
-        print('*****************************************************************')
-        print('Did not actually delete anything yet, pass in --confirm to delete')
-        print('*****************************************************************')
-   ''' 
     filepath = '../../'
     repo = Repo(filepath)
-    '''
-    commits_list = list(repo.iter_commits(max_count=1))
-
-    commit = commits_list[0]
-
-    print("commit id:", commit)
-    '''
+    
     sha = repo.git.reflog(max_count=1)
-    print("sha:", sha)
+    all_words = sha.split()
+    first_word = all_words[0]
+    print("sha:", first_word)
+    
     dry_run = '--yes' not in sys.argv
-    for branch in get_merged_branches():
+    deleted_branch = get_deleted_branch()
+    for deleted_branch in get_deleted_branch():
         if dry_run:
-            print(branch)
+            print(deleted_branch)
         else:
-            print(restore_branch(branch))
+            print(restore_branch(deleted_branch, first_word))
     if dry_run:
         print('*******************************************')
         print('Pass in --yes to restore the deleted branch')
