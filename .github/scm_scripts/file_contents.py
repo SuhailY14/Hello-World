@@ -19,6 +19,7 @@ def get_file_content(content):
     if flag != 0:
         print("Valid Content, Commit file doesn't contain non-ascii characters")
 
+        
 if __name__ == '__main__':
     filepath = os.path.realpath("../../dryrun_nios/dryrun_nios/")
     #print("filepath:", filepath)
